@@ -1,0 +1,5 @@
+langchain==0.3.25
+langchain-anthropic==0.3.10
+langchain-google-genai==2.0.1
+langgraph==0.4.7
+langchain-openai==0.3.25
