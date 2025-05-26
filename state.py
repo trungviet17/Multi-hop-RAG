@@ -1,5 +1,6 @@
+from enum import Enum
 from pydantic import BaseModel, Field
-from typing import List, Enum
+from typing import List
 
 
 class ProcessingState(str, Enum):
@@ -22,7 +23,7 @@ class ReactOutput(BaseModel):
     )
 
 class RAGOutput(BaseModel): 
-    
+
     documents: List[str] = Field(
         default=None, 
         description="A list of documents retrieved."
