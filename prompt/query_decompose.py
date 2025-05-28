@@ -64,4 +64,4 @@ def get_query_decompose_prompt(question: str, analysis: str) -> PromptTemplate:
     return PromptTemplate(
         input_variables=["question", "analysis"],
         template=QUERY_DECOMPOSE_PROMPT
-    ).partial(question=question, analysis=analysis)
+    ).format(question=question, analysis=analysis)

@@ -9,17 +9,24 @@ Input:
 - [OBSERVATION]: a list of (sub-question, answer) pairs, showing available supporting information.
 
 Instructions:
-- Use the analysis and observations to infer the final answer.
-- Respond **only** with the final answer (e.g., a name, location, or specific fact).
-- For yes/no question, just return "Yes" or "No"
-- If the answer is a person's name, write **only the name** (e.g., "Lina Cheng", not "Dr. Lina Cheng").
+- Use the analysis and observations to determine the final answer.
+- Return ONLY the exact information requested by the original question - nothing more.
+- Your answer must be minimal and direct:
+    * For a name: ONLY the name (e.g., "John Smith")
+    * For a location: ONLY the place name (e.g., "Paris")
+    * For a yes/no question: ONLY "Yes" or "No"
+- Do NOT include:
+    * Explanations or reasoning
+    * Titles (Dr., Prof., etc.)
+    * Additional context
+    * Complete sentences
 - If information is insufficient to answer, respond with:
-  `"Insufficient information."`
+    `"Insufficient information."`
 
 Return your output using the following JSON structure:
 
 final_answer = {{
-    "answer": "..."
+        "answer": "..."
 }}
 
 ---
@@ -38,7 +45,7 @@ The development team is directly stated in one of the sub-answers.
 - ("Who developed the Mirage quantum chip?", "Mirage was developed by NovaQ Systems.")
 
 final_answer = {{
-    "answer": "NovaQ Systems"
+        "answer": "NovaQ Systems"
 }}
 
 ---
@@ -56,7 +63,7 @@ We need to find the company that made Atlas-3, then trace the company's HQ locat
 - ("Where is AeroHelix based?", "AeroHelix is headquartered in Seattle.")
 
 final_answer = {{
-    "answer": "Seattle"
+        "answer": "Seattle"
 }}
 
 ---
@@ -74,7 +81,7 @@ We extract the individual mentioned in both sources regarding fraud accusations.
 - ("Who is mentioned in the FinJournal's fraud case?", "Jordan Reeve is central to the investigation.")
 
 final_answer = {{
-    "answer": "Jordan Reeve"
+        "answer": "Jordan Reeve"
 }}
 
 ---
@@ -92,7 +99,7 @@ First, identify the researcher, then find their university.
 - ("Where does Elias Tan work?", "He is a professor at Stanford University.")
 
 final_answer = {{
-    "answer": "Stanford University"
+        "answer": "Stanford University"
 }}
 
 ---
@@ -110,7 +117,7 @@ None of the observations contain propulsion design information.
 - ("Where was the Titan-X shuttle assembled?", "At the CosmoTech facility in Nevada.")
 
 final_answer = {{
-    "answer": "Insufficient information.."
+        "answer": "Insufficient information."
 }}
 
 ---
