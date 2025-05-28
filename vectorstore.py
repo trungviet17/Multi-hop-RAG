@@ -113,14 +113,31 @@ class VectorStore:
             raise Exception(f"An error occurred while loading documents: {e}")
 
 
-    def similarity_search(self, query: str, k: int, filter_dict: dict = None):
+    def similarity_search(self, query: str, k: int = 5, filter_dict: dict = None):
         try:
-            results = self.vector_store.similarity_search(
-                query=query, 
-                k=k, 
-                filter=filter_dict
+            
+            query_embedding = self.embedding_model.embed_query(query)
+
+            search_results = self.qdrant_client.search(
+                collection_name=self.collection_name,
+                query_vector=query_embedding,
+                limit=k
             )
-            return results
+            
+            documents = []
+            for result in search_results:
+    
+                doc = Document(
+                    page_content=f"{result.payload.get('title', '')}\n{result.payload.get('passage', '')}",
+                    metadata={
+                        'title': result.payload.get('title', ''),
+                        'passage': result.payload.get('passage', ''),
+                        'score': result.score  
+                    }
+                )
+                documents.append(doc)
+            
+            return documents  
         except Exception as e:
             raise Exception(f"Error during similarity search: {e}")
 
@@ -130,9 +147,18 @@ class VectorStore:
 if __name__ == "__main__": 
 
     vector_store = VectorStore()
-    vector_store.load_documents_from_json("data/embedded_chunks.json")
+    # vector_store.load_documents_from_json("data/embedded_chunks.json")
 
- 
+    results = vector_store.similarity_search(
+        query = "What is the battery capacity of the Tesla Model 3?", 
+        k = 5
+    )
+    for doc in results:
+        print(f"Title: {doc.metadata.get('title')}")
+        print(f"Passage: {doc.page_content}\n")
+        print(f"Score: {doc.metadata.get('score')}\n")
+        print("-" * 80)
+    
 
 
 

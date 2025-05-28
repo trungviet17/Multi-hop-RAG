@@ -3,5 +3,8 @@
   "graphs": {
     "agent": "graph:graph"
   },
-  "env": ".env"
+  "env": ".env", 
+  "server": {
+    "port": 8080
+  }
 }
