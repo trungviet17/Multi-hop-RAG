@@ -8,8 +8,6 @@ class ProcessingState(str, Enum):
 
 
 
-
-
 class ReactOutput(BaseModel): 
 
     observation: str = Field(

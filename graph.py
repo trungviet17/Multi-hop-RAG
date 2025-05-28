@@ -26,6 +26,9 @@ def generate_answer_node(state: State) -> State:
     pass
 
 
+def router(state: State) -> str:
+    pass 
+
 
 def create_graph(): 
 
@@ -41,10 +44,12 @@ def create_graph():
     workflow.add_edge("initialize", "analyze")
     workflow.add_conditional_edges(
         "analyze", 
+        router, 
         {
-            "query_decompose": lambda state: state.react_output.action == "query_decompose",
-            "generate_answer": lambda state: state.react_output.action == "generate_answer"
+            "query_decompose": "query_decompose",
+            "generate_answer": "generate_answer"
         }
+
     )
 
     workflow.add_edge("query_decompose", "rag")
