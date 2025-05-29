@@ -6,6 +6,14 @@ from graph import create_graph
 from state import State, Config 
 from tqdm import tqdm
 import hydra
+from time import sleep
+import os 
+import nltk 
+from warnings import filterwarnings
+
+
+nltk.download('punkt_tab')
+filterwarnings("ignore")
 
 class Benchmark: 
 
@@ -72,17 +80,19 @@ class Benchmark:
         output_state = self.workflow.invoke(init_state)
 
         pred = output_state.get("final_answer", "")
+        early_stopping = output_state.get("config").early_stopping
 
-        num_iter = self.config.get("early_stopping") - output_state.config.early_stopping
+        num_iter = self.config.get("early_stopping") - early_stopping
 
         return pred, num_iter 
 
 
 
     def save(self, output_path: str, tracking_data: dict = None): 
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
         with open(output_path, 'w') as file:
-            json.dum({
+            json.dump({
                 "metrics": self.results,
                 "config": self.config,
                 "sampled_data": tracking_data
@@ -115,10 +125,11 @@ class Benchmark:
 
             self.results["f1"].append(f1_score)
             self.results["num_iterations"].append(num_iter)
+            sleep(60) 
 
         self.results["mean_f1_score"] = sum(self.results["f1"]) / len(self.results["f1"]) if self.results["f1"] else 0.0
 
-        self.save(f"output/benchmark_results_{id}.json", tracking_data)
+        self.save(f"outputs/benchmark_results_{id}.json", tracking_data)
 
 
 
@@ -126,9 +137,18 @@ class Benchmark:
 def run(cfg: DictConfig): 
 
     config = OmegaConf.to_container(cfg, resolve=True)
+
+    print("Running with config: ") 
+    print(OmegaConf.to_yaml(config))
+
+    print(os.getcwd()) 
+
+    print(os.path.join("data", "MultiHopRAG.json"))
+
+
     benchmark = Benchmark(
         config = config,
-        data_path = "data/MultiHopRAG.json"
+        data_path = os.path.join("data", "MultiHopRAG.json")
     )
 
 

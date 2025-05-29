@@ -2,5 +2,16 @@ id: "default"
 early_stopping : 3 
 k  : 2
 backbone : "gemini-2.0-flash"
-sample_size: 10 
+sample_size: 2
 random_seed: 42 
+
+
+hydra:
+  job:
+    chdir: false  
+  output_subdir: null  
+  run:
+    dir: outputs/${id}
+  sweep:
+    dir: multirun
+    subdir: ${id}
