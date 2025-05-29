@@ -17,7 +17,7 @@ def initialize_node(state: State) -> State:
     state.observation = []
     state.react_output = None
     state.list_queries = []
-    state.early_stopping = 3  
+    
 
     return state
  
@@ -26,7 +26,7 @@ def initialize_node(state: State) -> State:
 def analyze_node(state: State) -> State: 
 
     prompt  = get_analyze_prompt(state.question, state.observation)
-    llm = LLM.get_gemini_model()
+    llm = LLM.get_backbone_model(state.config.backbone)
 
     chain = llm | ReactOutputParse()
 
@@ -45,9 +45,9 @@ def analyze_node(state: State) -> State:
 
 def query_decompose_node(state: State) -> State:
     
-    state.early_stopping -= 1
+    state.config.early_stopping -= 1
     prompt = get_query_decompose_prompt(state.question, state.react_output.analysis)
-    llm = LLM.get_gemini_model()
+    llm = LLM.get_backbone_model(state.config.backbone)
 
     chain = llm | QueryListOutputParser()
 
@@ -72,7 +72,7 @@ def rag_node(state: State) -> State:
 
     for query in state.list_queries:
         try: 
-            docs = vectorstore.similarity_search(query, k = 2)
+            docs = vectorstore.similarity_search(query, k = state.config.k)
             formatted_docs = [f"Title: {doc.metadata.get('title', '')}\n Passage: {doc.page_content}" for doc in docs]
             
             prompt = get_query_answer_prompt(
@@ -80,7 +80,7 @@ def rag_node(state: State) -> State:
                 information = formatted_docs,
             )
 
-            llm = LLM.get_gemini_model()
+            llm = LLM.get_backbone_model(state.config.backbone)
 
             chain = llm | AnswerOutputParser()    
             response = chain.invoke(prompt)
@@ -103,15 +103,13 @@ def generate_answer_node(state: State) -> State:
         observation=state.observation
     ) 
 
-    llm = LLM.get_gemini_model()
+    llm = LLM.get_backbone_model(state.config.backbone)
 
     chain = llm | AnswerOutputParser()
 
     try:
         response = chain.invoke(prompt)
         state.final_answer = response
-
-
 
     except Exception as e:
         raise ValueError(f"Error during final answer generation: {e}")
@@ -121,7 +119,7 @@ def generate_answer_node(state: State) -> State:
 
 def router(state: State) -> str:
 
-    if state.react_output.action == Action.RETRIEVE and state.early_stopping <= 0:
+    if state.react_output.action == Action.RETRIEVE and state.config.early_stopping <= 0:
         state.processing_state = ProcessingState.GENERATE_ANSWER
         return "generate_answer"
 

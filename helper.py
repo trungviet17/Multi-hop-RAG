@@ -19,6 +19,22 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 class LLM : 
 
+
+    @staticmethod 
+    def get_backbone_model(model_name: str, temperature: float = 0.3):
+
+        if "gemini" in model_name.lower():
+            return LLM.get_gemini_model(model_name=model_name, temperature=temperature)
+        
+        elif "gpt" in model_name.lower():
+            return LLM.get_gpt_model(model_name=model_name, temperature=temperature)
+
+        elif "llama" in model_name.lower() or "deepseek" in model_name.lower():
+            return LLM.get_groq_model(model_name=model_name, temperature=temperature)
+
+        raise ValueError(f"Unsupported model name: {model_name}. Supported models are Gemini, GPT, and Groq.")
+
+
     @staticmethod 
     def get_gemini_model(model_name: str = "gemini-2.0-flash", max_token : int = 100, temperature: float = 0.3) -> ChatGoogleGenerativeAI:
 
@@ -50,12 +66,19 @@ class LLM :
             temperature = temperature,
             api_key = GROQ_API_KEY
         ) 
-        pass
+        
 
 
     @staticmethod
-    def get_gemini_embedding_model(model_name: str = "text-embedding-004"):
-        pass
+    def get_gemini_embedding_model(model_name: str = "models/text-embedding-004"):
+
+        return GoogleGenerativeAIEmbeddings(
+            model = model_name, 
+            google_api_key = GEMINI_API_KEY
+        )
+
+
+
 
 
     @staticmethod

@@ -30,6 +30,25 @@ class ReactOutput(BaseModel):
 
 
 
+class Config(BaseModel): 
+
+    early_stopping : int = Field(
+        default=3, 
+        description="A flag to indicate if early stopping is enabled (1) or not (0)."
+    )
+
+    backbone : str = Field(
+        default="gemini-2.0-flash",
+        description="The backbone model to be used for the React agent."
+    )
+
+    k : int = Field(
+        default=3, 
+        description="The number of top results to retrieve from the vector store."
+    )
+
+
+
 
 class State(BaseModel): 
     
@@ -62,7 +81,9 @@ class State(BaseModel):
     )
 
 
-    early_stopping : int = Field(
-        default=3, 
-        description="A flag to indicate if early stopping is enabled (1) or not (0)."
+    config: Config = Field(
+        default=Config(), 
+        description="Configuration settings for Multi-hop RAG."
     )
+
+    

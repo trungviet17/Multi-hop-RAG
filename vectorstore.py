@@ -144,6 +144,17 @@ class VectorStore:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == "__main__": 
 
     vector_store = VectorStore()
