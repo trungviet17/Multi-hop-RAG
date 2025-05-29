@@ -10,10 +10,26 @@ from time import sleep
 import os 
 import nltk 
 from warnings import filterwarnings
+import logging 
+import wandb 
 
 
 nltk.download('punkt_tab')
 filterwarnings("ignore")
+logging.basicConfig(level=logging.ERROR)
+
+
+slience_list = [
+    "httpx", 
+    "httpcore", 
+    "qdrant_client", 
+    "urllib3", 
+    "nltk"
+]
+
+for logger_name in slience_list:
+    logging.getLogger(logger_name).setLevel(logging.ERROR)
+
 
 class Benchmark: 
 
@@ -28,12 +44,12 @@ class Benchmark:
 
     
         self.results = {
-            "f1" : [], 
-            "num_iterations" : [],
+            "mean_iter_num": 0.0,
             "mean_f1_score": 0.0
         }
 
         self.workflow = create_graph()
+        
 
 
     def sample_data(self, method: str = "random"): 
@@ -105,54 +121,71 @@ class Benchmark:
 
         sampled_data = self.sample_data(method=self.config.get("sampling_method", "random"))
 
-        tracking_data = {
-            "questions": [],
-            "ground_truths": [],
-            "predictions": [],
-        }
+        tracking_data = []
 
         for item in tqdm(sampled_data): 
             query = item.get("query", "")
             ground_truth = item.get("answer", "")
 
             pred, num_iter = self.invoke_graph(query)
-
-            tracking_data["questions"].append(query)
-            tracking_data["ground_truths"].append(ground_truth)
-            tracking_data["predictions"].append(pred)
-
             f1_score = self.calculate_f1_score(ground_truth, pred)
 
-            self.results["f1"].append(f1_score)
-            self.results["num_iterations"].append(num_iter)
-            sleep(60) 
-
-        self.results["mean_f1_score"] = sum(self.results["f1"]) / len(self.results["f1"]) if self.results["f1"] else 0.0
-
-        self.save(f"outputs/benchmark_results_{id}.json", tracking_data)
+            self.results["mean_f1_score"] += f1_score
+            self.results["mean_iter_num"] += num_iter
 
 
+            tracking_data.append({
+                "query": query,
+                "ground_truth": ground_truth,
+                "prediction": pred,
+                "f1_score": f1_score,
+                "num_iterations": num_iter
+            })
+
+            wandb.log({
+                "f1_score": f1_score,
+                "num_iterations": num_iter,
+            })
+
+            sleep(40)
+
+
+        self.results["mean_f1_score"] = self.results["mean_f1_score"] / len(sampled_data) if sampled_data else 0.0
+        self.results["mean_iter_num"] = self.results["mean_iter_num"] / len(sampled_data) if sampled_data else 0.0
+        
+        wandb.log({
+            "mean_f1_score": self.results["mean_f1_score"],
+            "mean_iter_num": self.results["mean_iter_num"],
+        })
+
+        self.save(f"outputs/{id}/results_{id}.json", tracking_data)
 
 @hydra.main(config_path = "config", config_name = "default") 
 def run(cfg: DictConfig): 
 
+    wandb.login(
+        key = os.getenv("WANDB_API_KEY")
+    )
+
     config = OmegaConf.to_container(cfg, resolve=True)
+
+    wandb.init(
+        project = "MultiHopRAG",
+        name = cfg.id, 
+        config = config, 
+
+    )
 
     print("Running with config: ") 
     print(OmegaConf.to_yaml(config))
-
-    print(os.getcwd()) 
-
-    print(os.path.join("data", "MultiHopRAG.json"))
-
 
     benchmark = Benchmark(
         config = config,
         data_path = os.path.join("data", "MultiHopRAG.json")
     )
 
-
     benchmark.run_benchmark(id=cfg.id)
+    wandb.finish()
 
     print("Done!") 
 

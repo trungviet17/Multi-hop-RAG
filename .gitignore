@@ -175,4 +175,5 @@ cython_debug/
 data/embedded_chunks.json 
 .langgraph_api 
 .conda
-outputs/
+
+wandb/

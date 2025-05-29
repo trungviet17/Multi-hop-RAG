@@ -6,7 +6,7 @@ from prompt.query_decompose import get_query_decompose_prompt
 from prompt.answer import get_final_answer_prompt
 from helper import LLM, ReactOutputParse, QueryListOutputParser, AnswerOutputParser
 from vectorstore import VectorStore
-
+from time import sleep 
 
 def initialize_node(state: State) -> State: 
 
@@ -31,6 +31,7 @@ def analyze_node(state: State) -> State:
     chain = llm | ReactOutputParse()
 
     try : 
+        sleep(5) 
         response = chain.invoke(prompt)
         state.react_output = response 
         
@@ -52,6 +53,7 @@ def query_decompose_node(state: State) -> State:
     chain = llm | QueryListOutputParser()
 
     try : 
+        sleep(5) 
         response = chain.invoke(prompt)
         state.list_queries = response
 
@@ -79,10 +81,10 @@ def rag_node(state: State) -> State:
                 query = query, 
                 information = formatted_docs,
             )
-
             llm = LLM.get_backbone_model(state.config.backbone)
 
             chain = llm | AnswerOutputParser()    
+            sleep(5) 
             response = chain.invoke(prompt)
 
             state.observation.append((query, response))
@@ -108,7 +110,9 @@ def generate_answer_node(state: State) -> State:
     chain = llm | AnswerOutputParser()
 
     try:
+        sleep(5) 
         response = chain.invoke(prompt)
+        
         state.final_answer = response
 
     except Exception as e:
