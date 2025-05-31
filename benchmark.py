@@ -146,6 +146,7 @@ class Benchmark:
                 "f1_score": f1_score,
                 "num_iterations": num_iter,
             })
+            self.save(f"outputs/{id}/results_{id}.json", tracking_data)
 
             sleep(40)
 

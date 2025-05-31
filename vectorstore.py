@@ -142,19 +142,6 @@ class VectorStore:
             raise Exception(f"Error during similarity search: {e}")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__": 
 
     vector_store = VectorStore()

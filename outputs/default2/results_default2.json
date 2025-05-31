@@ -1,0 +1,331 @@
+{
+  "metrics": {
+    "mean_iter_num": 1.86,
+    "mean_f1_score": 0.712
+  },
+  "config": {
+    "id": "default2",
+    "early_stopping": 3,
+    "k": 5,
+    "backbone": "gemini-2.0-flash",
+    "sample_size": 50,
+    "random_seed": 23
+  },
+  "sampled_data": [
+    {
+      "query": "Considering the updates on Azure's AI capabilities from a Bloomberg article and the expansion of Azure's data center regions as reported by Reuters, which single letter of the alphabet is the starting character for both the new AI feature announced and the name of the latest country to have an Azure data center announced?",
+      "ground_truth": "Insufficient information.",
+      "prediction": "Insufficient information.",
+      "f1_score": 1.0,
+      "num_iterations": 3
+    },
+    {
+      "query": "Between the report by The Verge on Google's impact on the internet's appearance published on November 1, 2023, and the TechCrunch article discussing the class action antitrust suit against Google published on December 15, 2023, was there a change in the portrayal of Google's influence on the internet and its stakeholders?",
+      "ground_truth": "Yes",
+      "prediction": "No",
+      "f1_score": 0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Considering the information from a New York Times article detailing Mattel Creations' collaboration with a famous artist and a Forbes report on Mattel Creations' release of a new toy line inspired by a classic movie series, which character from the movie series, now featured in the artist's collection, has been turned into a limited-edition toy by Mattel Creations?",
+      "ground_truth": "Insufficient information.",
+      "prediction": "Insufficient information.",
+      "f1_score": 1.0,
+      "num_iterations": 3
+    },
+    {
+      "query": "Did both the Sporting News report and the CBSSports.com report state that Tyreek Hill's chances of achieving 2,000-plus receiving yards before December 5, 2023, remained unchanged in their reporting of his progress towards his season goal?",
+      "ground_truth": "no",
+      "prediction": "No",
+      "f1_score": 1.0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Did the Sporting News article claim that the San Francisco 49ers were defeated by the Seahawks on Thanksgiving align with the Sporting News report on The Wolverines (Michigan football team) winning The Game for the third consecutive year in terms of both teams achieving recent victories?",
+      "ground_truth": "no",
+      "prediction": "No",
+      "f1_score": 1.0,
+      "num_iterations": 2
+    },
+    {
+      "query": "What company is associated with the AI model Gemini, which claims to rival the performance of GPT-4, and is also the subject of a class action antitrust suit reported by TechCrunch for harming news publishers' revenues and content through alleged anticompetitive practices?",
+      "ground_truth": "Google",
+      "prediction": "Google",
+      "f1_score": 1.0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Who, according to articles from The New York Times and The Washington Post, served as the Secretary of Homeland Security under President Obama and was also a key speaker at a cybersecurity conference in 2019?",
+      "ground_truth": "Insufficient information.",
+      "prediction": "Insufficient information.",
+      "f1_score": 1.0,
+      "num_iterations": 3
+    },
+    {
+      "query": "Has the focus on the need for car companies to embrace software, robotics, and artificial intelligence as reported by TechCrunch before October 1, 2023, remained consistent with the report on December 5, 2023, about Automakers and technology companies creating advanced digital platforms for vehicles?",
+      "ground_truth": "Yes",
+      "prediction": "Yes",
+      "f1_score": 1.0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Based on a New York Times article discussing Sacha Baron Cohen's advocacy for stricter regulations on social media platforms and a Variety piece highlighting his casting in a new historical drama series, which character, portrayed by Cohen in a film that was referenced in both articles, is known for his flamboyant fashion and controversial interviews?",
+      "ground_truth": "Insufficient information.",
+      "prediction": "Insufficient information.",
+      "f1_score": 1.0,
+      "num_iterations": 2
+    },
+    {
+      "query": "Did 'The Verge' article imply that Alameda Research was treated the same as other accounts at FTX without any special financial privileges, while the 'Fortune' article claims that Alameda Research's business practices with FTX were illegal, suggesting an undue advantage?",
+      "ground_truth": "no",
+      "prediction": "Yes",
+      "f1_score": 0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Who is the individual reported by The Verge as having given permission for withdrawals under specific conditions, by CNBC as planning an expert board for a company without investor directors, and by TechCrunch as both pleading not-guilty to multiple charges and being accused by the prosecution of committing fraud for personal gain?",
+      "ground_truth": "Sam Bankman-Fried",
+      "prediction": "Insufficient information.",
+      "f1_score": 0,
+      "num_iterations": 3
+    },
+    {
+      "query": "Does the TechCrunch coverage of Sam Bankman-Fried's legal situation agree on the number of fraud and conspiracy charges he is facing, or is there a discrepancy between the articles?",
+      "ground_truth": "Agree",
+      "prediction": "No",
+      "f1_score": 0,
+      "num_iterations": 3
+    },
+    {
+      "query": "Considering the information from a BBC article detailing Craig Revel Horwood's involvement in a charity event and a Guardian piece discussing his critique of a dance performance on a popular TV show, which letter would represent the initial of a contestant's first name who was praised by Horwood for their improvement at the charity event and also received a notably harsh critique for their samba on the TV show?",
+      "ground_truth": "Insufficient information.",
+      "prediction": "Insufficient information.",
+      "f1_score": 1.0,
+      "num_iterations": 3
+    },
+    {
+      "query": "Which company invested $26.3 billion to maintain its default search engine status across various devices and platforms, and is also accused by news publishers of adversely affecting their business through anticompetitive practices, while using relevance, distance, and prominence to rank local search results?",
+      "ground_truth": "Google",
+      "prediction": "Google",
+      "f1_score": 1.0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Considering the information from a Forbes article detailing the philanthropic efforts of the PayPal Mafia and a Bloomberg piece discussing the business ventures of the same group post-PayPal, which member of the PayPal Mafia, known for his investments in space exploration according to Forbes, also founded a financial services company that Bloomberg credits with revolutionizing online payments?",
+      "ground_truth": "Insufficient information.",
+      "prediction": "Insufficient information.",
+      "f1_score": 1.0,
+      "num_iterations": 3
+    },
+    {
+      "query": "After Sporting News reported on Najee Harris being the preferred goal-line back for the Steelers with touchdowns in three recent games on December 7, 2023, did Rivals report any touchdowns by Jonah Coleman for the Wildcats in the game against Utah before that date?",
+      "ground_truth": "Yes",
+      "prediction": "Insufficient information.",
+      "f1_score": 0,
+      "num_iterations": 3
+    },
+    {
+      "query": "Does the 'Sporting News' article claim that Newcastle United defeated Manchester United in the Carabao Cup, aligning with 'The Guardian' article's claim that Newcastle will face Chelsea in the quarter-finals, indicating both sources confirm Newcastle's progression in the tournament?",
+      "ground_truth": "Yes",
+      "prediction": "Yes",
+      "f1_score": 1.0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Considering the economic reforms discussed in a Bloomberg article and the environmental initiatives mentioned in a Reuters report on Kazakhstan, which ministry, symbolized by a single letter, would be primarily responsible for overseeing the implementation of policies that address both economic growth and environmental protection in Kazakhstan?",
+      "ground_truth": "Insufficient information.",
+      "prediction": "Insufficient information.",
+      "f1_score": 1.0,
+      "num_iterations": 3
+    },
+    {
+      "query": "What institution, as reported by The Sydney Morning Herald, has the power to significantly influence global financial markets with its interest rate decisions, which are currently anticipated by investors to remain steady based on weak US economic data and the institution's commitment to data-dependent policymaking?",
+      "ground_truth": "The Federal Reserve",
+      "prediction": "Federal Reserve",
+      "f1_score": 0.8,
+      "num_iterations": 1
+    },
+    {
+      "query": "Does the article from The Verge suggest that Google has the capability to address issues with Android app distribution and in-app payment systems, while the TechCrunch articles imply that Google's practices in both app distribution and news content distribution are anticompetitive?",
+      "ground_truth": "Yes",
+      "prediction": "Yes",
+      "f1_score": 1.0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Was the reporting of the status of Taylor Swift and Travis Kelce's relationship consistent between the report from CBSSports.com published on October 12, 2023, and the report from The Independent - Life and Style published on December 6, 2023?",
+      "ground_truth": "no",
+      "prediction": "Yes",
+      "f1_score": 0,
+      "num_iterations": 2
+    },
+    {
+      "query": "Between the TechCrunch report on Sam Bankman-Fried's intentions with his wealth published on October 2, 2023, and the TechCrunch report on the allegations against Sam Bankman-Fried published on October 7, 2023, was there a change in the portrayal of Sam Bankman-Fried's actions and intentions?",
+      "ground_truth": "Yes",
+      "prediction": "Yes",
+      "f1_score": 1.0,
+      "num_iterations": 2
+    },
+    {
+      "query": "Considering the information from a New York Times article and a Washington Post article on Nikki Haley, which political party does she belong to if the New York Times discusses her tenure as a former governor and the Washington Post covers her announcement to run for a national office?",
+      "ground_truth": "Insufficient information.",
+      "prediction": "Insufficient information.",
+      "f1_score": 1.0,
+      "num_iterations": 3
+    },
+    {
+      "query": "Considering the information from an article by The Verge about the iPad Air's new processor and another article by CNET discussing the device's compatibility with a specific accessory, which generation of iPad Air, represented by a single numeral, is the first to incorporate the mentioned processor and also supports the accessory discussed in the CNET article?",
+      "ground_truth": "Insufficient information.",
+      "prediction": "Insufficient information.",
+      "f1_score": 1.0,
+      "num_iterations": 2
+    },
+    {
+      "query": "Who is the individual associated with the rise of generative AI technology, whose departure from OpenAI was considered shocking, was not removed by Anthropic's co-founders, is suspected of not being fully truthful with the board, and is planning to launch a new venture according to articles from The Age, Fortune, and two reports by TechCrunch?",
+      "ground_truth": "Sam Altman",
+      "prediction": "Sam Altman",
+      "f1_score": 1.0,
+      "num_iterations": 3
+    },
+    {
+      "query": "Who is the individual whose criminal trial on fraud and conspiracy charges is imminent, as reported by TechCrunch, who also expressed to Paradigm a desire to establish a board with experts for a company mentioned by Cnbc | World Business News Leader, is accused of misusing a billion dollars of customer funds in a decision highlighted by The Verge, and is alleged by the prosecution to have committed fraud for personal gain according to another article by TechCrunch?",
+      "ground_truth": "Sam Bankman-Fried",
+      "prediction": "Sam Bankman-Fried",
+      "f1_score": 1.0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Who is the individual facing a criminal trial, as reported by both TechCrunch and Fortune, who was once considered the trustworthy face of the cryptocurrency industry according to The Verge, and is accused by the prosecution of committing fraud for personal gain?",
+      "ground_truth": "Sam Bankman-Fried",
+      "prediction": "Sam Bankman-Fried",
+      "f1_score": 1.0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Has the portrayal of Google's market practices in reports by The Age before October 22, 2023, remained consistent with the depiction in The Verge's coverage of the Epic v. Google case, and with TechCrunch's report on the class action antitrust suit filed against Google?",
+      "ground_truth": "no",
+      "prediction": "Yes",
+      "f1_score": 0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Which company, recently covered by TechCrunch, is involved in an antitrust lawsuit over its alleged anticompetitive practices affecting news publishers' revenues, is also battling Fortnite maker Epic Games in court over document disclosure, and has showcased its latest hardware developments at an annual event?",
+      "ground_truth": "Google",
+      "prediction": "Google",
+      "f1_score": 1.0,
+      "num_iterations": 2
+    },
+    {
+      "query": "Does the 'Sporting News' article describing the tackle by JD Bertrand on Jones indicate a change in possession, while the 'Sporting News' report on Cristian Romero's tackle on Raheem Sterling does not mention a possession change?",
+      "ground_truth": "Yes",
+      "prediction": "No",
+      "f1_score": 0,
+      "num_iterations": 2
+    },
+    {
+      "query": "After The Guardian reported on Manchester United's challenges with pressure in the Champions League on November 27, did TalkSport's report on November 29 about Manchester United's leaky defence and setting an unwanted record for conceding goals in the group stages show agreement or disagreement with The Guardian's assessment of Manchester United's performance in Europe?",
+      "ground_truth": "Agreement",
+      "prediction": "agreement",
+      "f1_score": 1.0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Which company, recently discussed in articles from 'The Age' and 'TechCrunch', has been accused of both manipulating search results to maximize ad revenue and engaging in anticompetitive practices by paying billions to remain the default search engine on various devices, while also hosting an annual event to showcase new hardware developments and facing a class action lawsuit for allegedly harming news publishers' bottom lines?",
+      "ground_truth": "Google",
+      "prediction": "Google",
+      "f1_score": 1.0,
+      "num_iterations": 2
+    },
+    {
+      "query": "Which company, recently compared by TechCrunch for its Gemini Pro's performance to OpenAI's GPT-3.5, also uses relevance, distance, and prominence to rank local search results according to The Verge, and is accused in another TechCrunch article of anticompetitively siphoning off news publishers' content, readers, and ad revenue?",
+      "ground_truth": "Google",
+      "prediction": "Google",
+      "f1_score": 1.0,
+      "num_iterations": 2
+    },
+    {
+      "query": "Between the TechCrunch report on Sam Bankman-Fried's trial published on October 1, 2023, and the TechCrunch report on the allegations against Sam Bankman-Fried published on October 7, 2023, was there consistency in the portrayal of the charges he faced?",
+      "ground_truth": "Yes",
+      "prediction": "Yes",
+      "f1_score": 1.0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Did The Age report on October 23, 2023, that Google manipulates Search to maximize ad revenue, and did TechCrunch report on December 15, 2023, that Google \"siphons off\" news publishers' content and ad revenue through anticompetitive means, resulting in inconsistent reporting on Google's alleged anticompetitive behavior between these two news sources?",
+      "ground_truth": "no",
+      "prediction": "Insufficient information.",
+      "f1_score": 0,
+      "num_iterations": 3
+    },
+    {
+      "query": "What type of establishments, as reported by Sporting News, not only modify their betting lines due to events such as injuries or team changes but also offer incentives for new users and are designed to ensure profitability regardless of betting outcomes, specifically in scenarios like forecasting the NBA Rookie of the Year?",
+      "ground_truth": "Sportsbooks",
+      "prediction": "sportsbooks",
+      "f1_score": 1.0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Who is the individual being judged for their actions in a legal case, where contrasting stories are presented in 'Fortune', is accused of using a front for secret access to customer funds, and is alleged by the prosecution in a 'TechCrunch' article to have committed fraud for personal gain?",
+      "ground_truth": "Sam Bankman-Fried",
+      "prediction": "Sam Bankman-Fried",
+      "f1_score": 1.0,
+      "num_iterations": 1
+    },
+    {
+      "query": "After the report from CBSSports.com on October 12, 2023, about Taylor Swift's activities at Arrowhead Stadium, and the subsequent report from The Independent - Life and Style on November 25, 2023, regarding Travis Kelce's invitation to Taylor Swift, was the news about Taylor Swift's relationship with Travis Kelce consistent with the later report from The Independent - Life and Style on December 6, 2023?",
+      "ground_truth": "Yes",
+      "prediction": "Yes",
+      "f1_score": 1.0,
+      "num_iterations": 3
+    },
+    {
+      "query": "Who is the individual that persuaded Adam Yedidia to leave Jane Street and join both Alameda and FTX, and is also accused by the prosecution of committing fraud for personal gain, as reported by Fortune and TechCrunch?",
+      "ground_truth": "Sam Bankman-Fried",
+      "prediction": "Sam Bankman-Fried",
+      "f1_score": 1.0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Considering the injury updates reported by CBSSports.com on November 19, 2023, regarding Cooper Kupp and the subsequent report by Sporting News on December 7, 2023, about Derrick Henry, does the sequence of reports indicate that both players did not suffer in-game injuries that led to them leaving their respective games for further evaluation and returning to the game?",
+      "ground_truth": "no",
+      "prediction": "Yes",
+      "f1_score": 0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Considering the financial performance overview from a Forbes article and the strategic partnership developments mentioned in a Wall Street Journal article on Advance Auto Parts, which single letter symbol represents the company's stock ticker on the New York Stock Exchange?",
+      "ground_truth": "Insufficient information.",
+      "prediction": "Insufficient information.",
+      "f1_score": 1.0,
+      "num_iterations": 3
+    },
+    {
+      "query": "Does the article from The Verge suggest that Google's deals with companies to be the default search engine are without valid alternatives, while the TechCrunch article quantifies Google's spending on these deals at $26.3 billion in 2021, indicating a significant investment to maintain this status?",
+      "ground_truth": "Yes",
+      "prediction": "Yes",
+      "f1_score": 1.0,
+      "num_iterations": 1
+    },
+    {
+      "query": "Does the Fortune article suggest that Sam Bankman-Fried's actions were the primary cause of FTX's success being built on lies, while the TechCrunch article implies that comments by Changpeng Zhao were a contributing factor to the collapse of FTX?",
+      "ground_truth": "Yes",
+      "prediction": "Insufficient information.",
+      "f1_score": 0,
+      "num_iterations": 2
+    },
+    {
+      "query": "Considering the information from an ESPN article and a BBC Sports report on Shabnim Ismail, which team did she represent when she achieved a career milestone mentioned in ESPN and also faced an opponent highlighted in the BBC Sports article in a significant tournament?",
+      "ground_truth": "Insufficient information.",
+      "prediction": "Insufficient information.",
+      "f1_score": 1.0,
+      "num_iterations": 3
+    },
+    {
+      "query": "After Sporting News reported on Johnny Cardoso's inclusion in the USMNT squad post-injury on October 4, 2023, and CBSSports.com announced De'Von Achane's move to Injured Reserve on October 12, 2023, which player's status changed between the two reports, Johnny Cardoso or De'Von Achane?",
+      "ground_truth": "Johnny Cardoso",
+      "prediction": "DeVon Achane",
+      "f1_score": 0,
+      "num_iterations": 0
+    }
+  ]
+}
