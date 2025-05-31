@@ -23,12 +23,12 @@ Instructions:
 - If information is insufficient to answer, respond with:
     `"Insufficient information."`
 
-IMPORTANT: If your response contains any double quotes (") within the  "answer" values, you MUST escape them with a backslash (\\"). This ensures proper JSON formatting while preserving the original quotation marks.
+IMPORTANT: To avoid JSON parsing errors, DO NOT use any double quotes (") or single quotes (') within your answer values. Use alternative wording if you need to mention something that would typically be in quotes.
 
 Return your output using the following JSON structure:
 
 final_answer = {{
-        "answer": "Your answer here. Remember to escape any \\\"quotes\\\" inside this text"
+        "answer": "Your answer here without using any quotes."
 }}
 
 ---

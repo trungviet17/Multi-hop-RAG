@@ -6,8 +6,7 @@ You are an expert in multi-hop question answering query decomposition.
 Given a main question and the previous step's analysis, your task is to generate a list of sub-questions or keywords that should be retrieved next to help answer the main question.
 
 
-IMPORTANT: If your response contains any double quotes (") within the "queries" values, you MUST escape them with a backslash (\\"). This ensures proper JSON formatting while preserving the original quotation marks.
-
+MPORTANT: To avoid JSON parsing errors, DO NOT use any double quotes (") or single quotes (') within your queries values. Use alternative wording if you need to mention something that would typically be in quotes.
 
 Output format (strictly) in the following JSON structure:
 ```json
