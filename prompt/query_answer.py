@@ -14,11 +14,14 @@ Your task:
 - Provide a concise and factual answer to the query.
 - If the information is insufficient, respond with: "No information available."
 
+IMPORTANT: If your response contains any double quotes (") within the "query" or "answer" values, you MUST escape them with a backslash (\\"). This ensures proper JSON formatting while preserving the original quotation marks.
+
+
 Respond in the following JSON format:
 ```json
 {{
-  "query": "...",
-  "answer": "..."
+  "query": "Your query here. Remember to escape any \\\"quotes\\\" inside this text",
+  "answer": "Your answer here. Remember to escape any \\\"quotes\\\" inside this text"
 }}
 ```
 ---

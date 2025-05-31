@@ -11,11 +11,13 @@ You must return:
 1. "action": either "ANSWER" (if sufficient) or "RETRIEVE" (if more sub-questions are needed)
 2. "analysis": your reasoning process. If more evidence is needed, include a strategic plan of what kind of sub-question or information would help complete the reasoning chain.
 
+IMPORTANT: If your response contains any double quotes (") within the "action" or "analysis" values, you MUST escape them with a backslash (\\"). This ensures proper JSON formatting while preserving the original quotation marks.
+
 Respond in the following JSON format:
 ```json
 {{
     "action": "ANSWER" or "RETRIEVE",
-    "analysis": "..."
+    "analysis": "Your analysis here. Remember to escape any \\\"quotes\\\" inside this text"
 }}
 ```
 
