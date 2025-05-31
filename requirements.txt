@@ -14,3 +14,4 @@ pip-chill==1.0.3
 sentence-transformers==3.0.1
 wandb==0.19.11
 qdrant-client==1.14.2
+nltk==3.9.1
