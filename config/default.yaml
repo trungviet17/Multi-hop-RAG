@@ -1,9 +1,12 @@
 id: "default"
 early_stopping : 3 
-k  : 2
-backbone : "gemini-2.0-flash"
+k  : 5
+backbone : "gpt-4o-mini"
 sample_size: 20
 random_seed: 23
+sampling_method: "in_range"
+num_parts : 6
+part: 0
 
 
 hydra:

@@ -8,13 +8,11 @@ from state import ReactOutput, Action
 import json 
 import re 
 
-load_dotenv('.env')
+load_dotenv('.env', override = True)
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GPT_API_KEY = os.getenv("GPT_API_KEY")
+GPT_API_KEY = os.getenv("OPENAI_API_KEY")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-
-
 
 
 class LLM : 
@@ -76,9 +74,6 @@ class LLM :
             model = model_name, 
             google_api_key = GEMINI_API_KEY
         )
-
-
-
 
 
     @staticmethod

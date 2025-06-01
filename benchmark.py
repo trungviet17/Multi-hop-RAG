@@ -52,18 +52,22 @@ class Benchmark:
         
 
 
-    def sample_data(self, method: str = "random"): 
+    def sample_data(self, method: str = "in_range"): 
 
-        sample_size = self.config.get("sample_size", 10)
-        sample_size = min(sample_size, len(self.data))
 
-        
         if method == "random":
+            sample_size = self.config.get("sample_size", 10)
+            sample_size = min(sample_size, len(self.data))
             random.seed(self.config.get("seed", 42))
             return random.sample(self.data, sample_size)
 
-        elif method == "first_n":
-            return self.data[:sample_size]
+        elif method == "in_range": 
+            part = self.config.get("part", 0)
+
+            part_item = len(self.data) // self.config.get("num_parts", 1)
+            start = part * part_item
+            end = start + part_item if part < self.config.get("num_parts", 1) - 1 else len(self.data)
+            return self.data[start:end]
 
 
     def calculate_f1_score(self, ground_truth: str, pred: str): 
@@ -119,7 +123,7 @@ class Benchmark:
     
     def run_benchmark(self, id: str = "default"):
 
-        sampled_data = self.sample_data(method=self.config.get("sampling_method", "random"))
+        sampled_data = self.sample_data(method=self.config.get("sampling_method", "in_range"))
 
         tracking_data = []
 
@@ -148,7 +152,7 @@ class Benchmark:
             })
             self.save(f"outputs/{id}/results_{id}.json", tracking_data)
 
-            sleep(40)
+            # sleep(40)
 
 
         self.results["mean_f1_score"] = self.results["mean_f1_score"] / len(sampled_data) if sampled_data else 0.0
@@ -158,8 +162,8 @@ class Benchmark:
             "mean_f1_score": self.results["mean_f1_score"],
             "mean_iter_num": self.results["mean_iter_num"],
         })
-
-        self.save(f"outputs/{id}/results_{id}.json", tracking_data)
+        part = self.config.get("part", 0)
+        self.save(f"outputs/{id}/results_{id}_part{str(part)}.json", tracking_data)
 
 @hydra.main(config_path = "config", config_name = "default") 
 def run(cfg: DictConfig): 
