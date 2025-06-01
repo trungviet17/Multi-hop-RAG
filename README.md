@@ -28,7 +28,7 @@ python -m venv venv
 
 pip install -r requirements.txt
 
-python benchmark.py --id <your_id> --k <your_k> --backbone <your_backbone> --sample_size <your_sample_size> --early_stopping <your_early_stopping> 
+python benchmark.py --part <your_part> --id <your_config_id> --k <your_k> --backbone <your_backbone> --sample_size <your_sample_size> --early_stopping <your_early_stopping> 
 
 ```
 
