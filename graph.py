@@ -31,7 +31,7 @@ def analyze_node(state: State) -> State:
     chain = llm | ReactOutputParse()
 
     try : 
-        sleep(5) 
+        # sleep(5) 
         response = chain.invoke(prompt)
         state.react_output = response 
         
@@ -53,7 +53,7 @@ def query_decompose_node(state: State) -> State:
     chain = llm | QueryListOutputParser()
 
     try : 
-        sleep(5) 
+        # sleep(5) 
         response = chain.invoke(prompt)
         state.list_queries = response
 
@@ -84,7 +84,7 @@ def rag_node(state: State) -> State:
             llm = LLM.get_backbone_model(state.config.backbone)
 
             chain = llm | AnswerOutputParser()    
-            sleep(5) 
+            # sleep(5) 
             response = chain.invoke(prompt)
 
             state.observation.append((query, response))
@@ -110,7 +110,7 @@ def generate_answer_node(state: State) -> State:
     chain = llm | AnswerOutputParser()
 
     try:
-        sleep(5) 
+        # sleep(5) 
         response = chain.invoke(prompt)
         
         state.final_answer = response
