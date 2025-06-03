@@ -65,7 +65,7 @@ class Benchmark:
             part = self.config.get("part", 0)
 
             part_item = len(self.data) // self.config.get("num_parts", 1)
-            start = part * part_item
+            start = part * part_item  
             end = start + part_item if part < self.config.get("num_parts", 1) - 1 else len(self.data)
             return self.data[start:end]
 
@@ -124,9 +124,9 @@ class Benchmark:
     def run_benchmark(self, id: str = "default"):
 
         sampled_data = self.sample_data(method=self.config.get("sampling_method", "in_range"))
-
+        part = self.config.get("part", 0)
         tracking_data = []
-
+        num_inst = 0 
         for item in tqdm(sampled_data): 
             query = item.get("query", "")
             ground_truth = item.get("answer", "")
@@ -145,12 +145,12 @@ class Benchmark:
                 "f1_score": f1_score,
                 "num_iterations": num_iter
             })
-
+            num_inst += 1
             wandb.log({
-                "f1_score": f1_score,
+                "f1_score": f1_score / num_inst,
                 "num_iterations": num_iter,
             })
-            self.save(f"outputs/{id}/results_{id}.json", tracking_data)
+            self.save(f"outputs/{id}/results_{id}_part{str(part)}.json", tracking_data)
 
             # sleep(40)
 
@@ -162,7 +162,7 @@ class Benchmark:
             "mean_f1_score": self.results["mean_f1_score"],
             "mean_iter_num": self.results["mean_iter_num"],
         })
-        part = self.config.get("part", 0)
+        
         self.save(f"outputs/{id}/results_{id}_part{str(part)}.json", tracking_data)
 
 @hydra.main(config_path = "config", config_name = "default") 

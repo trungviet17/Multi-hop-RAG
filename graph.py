@@ -15,7 +15,6 @@ def initialize_node(state: State) -> State:
 
     state.processing_state = ProcessingState.ANALYZE
     state.observation = []
-    state.react_output = None
     state.list_queries = []
     
 

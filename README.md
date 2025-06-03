@@ -10,14 +10,11 @@ LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
 LANGSMITH_API_KEY=
 LANGSMITH_PROJECT="Multi-hop RAG"
 
-
 OPENAI_API_KEY = 
 GROQ_API_KEY = 
 QDRANT_API_KEY = 
 QDRANT_URL = 
 WANDB_API_KEY = 
-
-
 ```
 
 
@@ -29,7 +26,6 @@ python -m venv venv
 pip install -r requirements.txt
 
 python benchmark.py --part <your_part> --id <your_config_id> --k <your_k> --backbone <your_backbone> --sample_size <your_sample_size> --early_stopping <your_early_stopping> 
-
 ```
 
 
@@ -37,7 +33,6 @@ python benchmark.py --part <your_part> --id <your_config_id> --k <your_k> --back
 
 ```
 langgraph dev --port <your_port> 
-
 ```
 
 

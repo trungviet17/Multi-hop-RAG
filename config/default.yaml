@@ -6,7 +6,7 @@ sample_size: 20
 random_seed: 23
 sampling_method: "in_range"
 num_parts : 6
-part: 0
+part: 2
 
 
 hydra:
